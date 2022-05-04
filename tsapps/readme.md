@@ -1,0 +1,34 @@
+# Programming with TypeScript
+- ES 6 features (7,8,9,10,11, esnext)
+    - TypeSystem
+    - Union Types
+    - Rest Parameters
+    - Template String
+    - Arrow Operators
+    - Array and String Functions
+    - Object Oriented Programming   
+        - class, interface, generics
+        - access specifiers
+        - Inheritance
+    - Modules
+- ES 6 Languages
+    - High-Level JavaScript aka Modern JavaScript aka ES 6/7/8/9/10/11/esnext
+        - Used by React and Vue.js, Node.js optionally used by Angular (Not Recommended)
+    - TypeScript
+        - By Microsoft 
+        - Used as a default language by Angular
+        - Can be used for React, Vue.js, Node.js   
+        - Best suitable for Code sharing across JS Libs and Frameworks
+        - Explicit Features Only Available in TypeScript by default
+            - Data Types, Union Types, private, protected access specifiers
+    - Dart
+        - By Google
+- TypeScript is shipped as a Library for Programming
+    - npm install -g typescript
+        - Offers the 'tsc' tool
+            - USed for Transpiling TypeScript Code (.ts file) into JavaScript Code (.js)
+        - The TypeScript Project Configuration (Very Important in Angular)
+            - tsc init
+                - Generate 'tsconfig.json' file with the Current Project configuration      
+
+
