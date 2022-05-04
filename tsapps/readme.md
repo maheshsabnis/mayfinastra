@@ -1,5 +1,6 @@
 # Programming with TypeScript
 - ES 6 features (7,8,9,10,11, esnext)
+    - Block Scope variable definition using 'let' 
     - TypeSystem
     - Union Types
     - Rest Parameters
@@ -27,8 +28,26 @@
     - npm install -g typescript
         - Offers the 'tsc' tool
             - USed for Transpiling TypeScript Code (.ts file) into JavaScript Code (.js)
+            - Transpilation
+                -  tsc SOURCE-FILE.ts, this will result into SOURCE-FILE.js
         - The TypeScript Project Configuration (Very Important in Angular)
-            - tsc init
+            - tsc -init
                 - Generate 'tsconfig.json' file with the Current Project configuration      
 
-
+- Iterations over the Collection
+    - for..loop
+    - for..in loop, simplification over the for..loop
+    - for..of loop, new in ES 6, uses the Iterator  
+    - forEach(callback-function)
+        - Iteration w/o changing the original collection 
+        - does not return anything 
+    - map(callback-function)
+        - Iteration, but can change the original collection based on condition and return the collection of same size
+        - if condition does not match on collection element, then in return value it is 'undefined'  
+    - filter(callback-function)
+        - Iterate, and return a new collection with modified size based on condition matched on elements  
+    - ES 7 method,  reduce(callback-function), wrapper on the forEach for specific implementation 
+        - Process the collection itself for
+            - summation of all values
+            - creating Group inside the collection based on matching key
+            - Finding out the frequency of repetition of data in the collection  
