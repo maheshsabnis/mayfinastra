@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./app.js"></script>
+    <script>
+        window.onload = function(){
+            let logic = new DepartmentLogic();
+            var btnGet = document.getElementById('getall');
+            btnGet.addEventListener('click', function(){
+                let depts = logic.getDepts();
+                console.log(JSON.stringify(depts));
+            },false);
+
+            var btnAdd = document.getElementById('addDept');
+            btnAdd.addEventListener('click', function(){
+                let dept = new Department(10, 'IT', 'Pune', 10000);
+                let depts = logic.addDept(dept);
+                console.log('After Add ' + JSON.stringify(depts));
+            },false);
+        }
+    </script>
+</head>
+<body>
+    <button id="getall">Get All Departments</button>
+    <hr/>
+    <button id="addDept">Add Department</button>
+
+</body>
+</html>

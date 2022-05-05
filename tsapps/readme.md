@@ -51,3 +51,37 @@
             - summation of all values
             - creating Group inside the collection based on matching key
             - Finding out the frequency of repetition of data in the collection  
+- Array
+    - Traditional Array Methods in JS ES 3,5, etc
+        - push(), pop(), shift(), unShift(),
+        - indexOf(), lastIndexOf()
+        - splice(), remove record from array
+        - slice(), dividing array into min two arrays
+        - sort()
+    - ES 6 methods
+        - reverse(), forEach(), filter(), map(),reduce()   
+
+- class
+    - The 'class' keyword
+    - default members are public but define them private explicitly
+    - derivation is possible using  'extends' keyword
+    - No overloading by default
+    - interfaces are implemented using 'implements' keyword, a class can implement multiple interfaces        
+    - The OOPs in TS is recommended by implementing the 'MODULARITY'
+        - e.g. Presenter class, Logic class, Data Processing Utilities, external service calls 
+- Object Immutations using 'spread operator'
+    - e.g.
+        - ...obj
+            - The 'obj' will spread with new properties/schema with values in it
+    - Advantages
+        - If array is modified with new values then instead of calling 'push()', sperad array with new data
+            - let arr=[122,23434];
+            - arr = [...arr, 35454,566]; 
+                - the arr will be spread with new values in it
+        - If a Same Complex object is to be updated with new properties and values, then use the object spread
+            - let obj={x:10};
+            - obj = {...obj, y:20};
+                - obj will have x and y properties in it  
+        - we can use it for passing variable number oif parameters to a method
+            - internally JavaScript will use it as '...arguments'
+                - 'arguments' is a default array used by JS when a method accepts parameters           
