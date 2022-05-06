@@ -1,27 +1,65 @@
-# NgFinApp
+ng build --watch --configuration development (Angulart 13.x)
+Initial Chunk Files | Names         |  Raw Size
+vendor.js           | vendor        |   1.81 MB | --> Standard Angular Package Transpilation
+polyfills.js        | polyfills     | 122.97 kB | --> The Browser Compatibility/Stack Tract JS
+main.js             | main          |  50.10 kB | --> The Transapilation of dev. code
+runtime.js          | runtime       |   6.35 kB | --> WebPack DevKit Configuration file 
+styles.css          | styles        | 736 bytes | --> CSS Merging and build of all CSS
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+                    | Initial Total |   1.98 MB
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Production build
+ ng serve --configuration production
 
-## Code scaffolding
+Initial Chunk Files   | Names         |  Raw Size | Estimated Transfer Size
+main.js               | main          | 310.14 kB |                81.15 kB
+polyfills.js          | polyfills     | 151.07 kB |                39.09 kB
+styles.css, styles.js | styles        | 117.10 kB |                28.47 kB
+runtime.js            | runtime       |   1.25 kB |               677 bytes
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+                      | Initial Total | 579.57 kB |               149.37 kB
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Angular Object Model
+- Module
+  - @angular/core
+  - @NgModule 
+    - Object that contains Component, Directives, services, pipes, etc.
+    - imports:[]
+    - exports:[]
+    - declarations:[]
+    - bootstrap:[]
+    - providers:[]
+- Component
+  - Autonomous Object that contains the following
+    - UI, using HTML template
+      - External html file (Recommended)
+      - Inline HTML
+      - This UI is loaded in browser using the 'selector' property, this will provide 'CUSTOM HTML TAG'     
+    - Data Members
+      - USed for Data binding
+    - Methods
+      - Used for Event Binding    
+- Directive
+  - Custom reusable HTML UI
+  - Custom reusable UI Behavior based on Events
+  - Directives are used in HTML Template of the Component
+  - The 'Component' is also a Directive, we can used it as reusable UI
+  - Directive Types
+    - Component
+    - Structural Directives
+      - *ngFor, execute a for..of loop on collection to generate HTML Elements Dynamically
+      - *ngIf, the If Condition for Toggeling
+      - *ngSwicth..ngSwitchCase, switch case
+    - Attribute Directives
+      - Used for applying behavior on HTML Elements
+      - Angular have a Parser to extend standard HTML Properties to be used as Angular Attribute directives
+        - [value], [href], [disabled], [checked], [hidden], etc.
+        - Most of the Attribute directives are used for DataBinding
+        - Angular Specific Directives
+          - [formGroup], [(ngModel)], etc.    
+- Pipe
+  - String Transformation for showing Static UI on HTML Page
+- Service
+  - Injectable objects used at application Level
+  - e.g. An object that is used to make HTTP Calls to REST APIs
