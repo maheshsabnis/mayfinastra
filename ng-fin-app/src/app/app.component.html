@@ -47,4 +47,17 @@
     <select class="form-control" [(ngModel)]="selName">
        <option *ngFor="let n of names" value="{{n}}">{{n}}</option>
     </select>
+    <br/>
+    <button class="brn btn-danger" (click)="toggleVal()">Toggle</button>
+    <div class="container" [hidden]="toggle">
+      <strong>Value will be displayed for using hidden {{toggle}}</strong>
+      <br/>
+      <app-message-component></app-message-component>
+    </div>
+    <hr>
+    <div class="container" *ngIf="toggle">
+      <strong>Value will be displayed for using *ngIf {{toggle}}</strong>
+      <br/>
+      <app-message-component></app-message-component>
+    </div>
 </div>

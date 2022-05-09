@@ -1,0 +1,83 @@
+<h1>The Employee Template Component</h1>
+<div class="container">
+  <div class="form-group">
+    <label>EmpNo</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.EmpNo" />
+  </div>
+  <div class="form-group">
+    <label>EmpName</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.EmpName" />
+  </div>
+  <div class="form-group">
+    <label>Designation</label>
+    <!-- <select class="form-control" [(ngModel)]="employee.Designation">
+       <option *ngFor="let desig of designations" value="{{desig}}">{{desig}}</option>
+    </select> -->
+    <app-select-component [DataSource]="designations" [SelectedValue]="employee.Designation"
+     (notify)="getDesignation($event)"></app-select-component>
+  </div>
+  <div class="form-group">
+    <label>DeptName</label>
+    <!-- <select class="form-control" [(ngModel)]="employee.DeptName">
+      <option *ngFor="let dept of departments" value="{{dept}}">{{dept}}</option>
+    </select> -->
+    <app-select-component [DataSource]="departments"
+    (notify)="getDeptName($event)" [SelectedValue]="employee.DeptName"></app-select-component>
+  </div>
+  <div class="form-group">
+    <label>Salary</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.Salary" />
+  </div>
+  <div class="form-group">
+    <input type="button" value="Clear" (click)="clear()" class="bt btn-primary">
+    <input type="button" value="Save" (click)="save()" class="bt btn-success">
+  </div>
+  <hr/>
+  <!--Hard-Coded Table-->
+  <!-- <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>EmpNo</th>
+        <th>EmpName</th>
+        <th>Designation</th>
+        <th>DeptName</th>
+        <th>Salary</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employees" (click)="getSelectedEmp(emp)">
+         <td>
+           {{emp.EmpNo}}
+         </td>
+         <td>
+          {{emp.EmpName}}
+        </td>
+        <td>
+          {{emp.Designation}}
+        </td>
+        <td>
+          {{emp.DeptName}}
+        </td>
+        <td>
+          {{emp.Salary}}
+        </td>
+      </tr>
+    </tbody>
+
+  </table> -->
+  <!--generating the table dynamically-->
+  <table class="table table-bordered table-striped">
+     <!--Generate Headers-->
+     <thead>
+        <tr>
+          <th *ngFor="let header of columnHeaders">{{header}}</th>
+     </thead>
+     <tbody>
+        <tr *ngFor="let emp of employees" (click)="getSelectedEmp(emp)">
+           <td *ngFor="let header of columnHeaders">
+              {{emp[header]}}
+           </td>
+        </tr>
+     </tbody>
+  </table>
+</div>

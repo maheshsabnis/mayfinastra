@@ -50,6 +50,7 @@ runtime.js            | runtime       |   1.25 kB |               677 bytes
     - Structural Directives
       - *ngFor, execute a for..of loop on collection to generate HTML Elements Dynamically
       - *ngIf, the If Condition for Toggeling
+        - using *ngIf is recommended when the DOM add/remove is not costly (Toggeling for Custom Complex Component e.g. DataGrid, COmplex List with huge data)
       - *ngSwicth..ngSwitchCase, switch case
     - Attribute Directives
       - Used for applying behavior on HTML Elements
@@ -63,3 +64,37 @@ runtime.js            | runtime       |   1.25 kB |               677 bytes
 - Service
   - Injectable objects used at application Level
   - e.g. An object that is used to make HTTP Calls to REST APIs
+
+- FullStack
+  - JavaScript Front-End, API Middleware, Server-Side App and Database
+    - Angular/React/Vue/Ember, REST API (JAVA Spring Boot), JAVA Server-Side App, Oracle, MS-SQL, MySQL, etc or NoSQL DB, (JAVA FullStack)
+    -  Angular/React/Vue/Ember, REST API (Microsoft .NET Core), ASP.NET Core Server-Side App, Oracle, MS-SQL, MySQL, etc or NoSQL DB (Microsoft FullStack)
+    -  Angular/React/Vue/Ember, REST API (Node+Express), Node+Express+Sequelize+Other Modules Server-Side App, Oracle, MS-SQL, MySQL, etc or NoSQL DB (Pure JavaScript FullStack with Isomorphic Apps)
+    - Blazor, a .NET Runtime in Browser with C# Code, Pure Component Based using C#
+
+- Practices to be followed while designing UI for Line-of-Business (LOB) Apps
+
+  - Plan for Models e.g. Entity Classes, Logic Classes and Utility Classes for the Front-End
+  - do not write logic into the component class
+  - If the UI is Complex then use following strategies to manage the UI
+    - Create a Re-Usable Component if same complex UI is repeated e.g. Tables, Lists, etc.
+    - Avoid Hard-Coding for Data Properties when the UI (e.g. table) is generated dynamically
+    - Decide wisely for Parent-Child Relationships across the Components
+      - Understand 'COMPONENT-LIFECYCLE' properly
+- Parent-Child Component Communication
+  - Create a Re-Usable Component by following below rules
+    - Make sure that the UI is consistent across all of its parents
+    - The component MUST define @Input decorated public property for accepting data from the parent
+    - If the Component wants to emit data to patent, then there must be an 'EventEmitter<T>' event declared and its MUST be decorated by @Output decorator to emit the data 
+    - @Input applied on public property to accept data, from @angular/core 
+      - The property decorated with @Input will be used for property binding 
+    - EventEmitter<T>, class from  @angular/core , used to define an event for emitting data from parent-to-child
+      - T is the type of data (string, number, etc.) to be emitted
+      - The method 'emit()' will be used to emit data from child to parent
+      - The EventEmitter decorated with @Output is used for 'event-binding' in parent component
+        - The Parent Component MUST subscribe to it
+    - @Output, decorator from  @angular/core, applied on EventEmitted event so that when an event is emitted from child, it will be bubbled-up to parent   
+  - USing the @ViewChild or View Encapsulation  
+    - Using @ViewChild, means that the Parent Holds  reference of child Component and it update the child component explicitly
+- Publish-Subscribe Component Communication Patterns      
+ 
