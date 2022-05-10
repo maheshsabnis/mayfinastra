@@ -1,0 +1,58 @@
+<h1>The Employee React Form Component</h1>
+<div class="container">
+  <!--Bind the frmEmp to formGroup attribute binding-->
+  <form (ngSubmit)="save()" [formGroup]="frmEmp">
+
+  <div class="form-group">
+    <label>EmpNo</label>
+    <!--formControlName, is a key inside the frmEmp instance-->
+    <input type="text" class="form-control"  formControlName="EmpNo" />
+    <div class="alert alert-danger"
+       *ngIf="frmEmp.controls['EmpNo'].dirty&&!frmEmp.controls['EmpNo'].valid">
+      <p *ngIf="frmEmp.controls['EmpNo'].errors['required']">EmpNo is Required</p>
+      <p *ngIf="frmEmp.controls['EmpNo'].errors['minlength']">EmpNo is Must be 2 digits Minimum</p>
+      <p *ngIf="frmEmp.controls['EmpNo'].errors['maxlength']">EmpNo is Can be 8 digits Maximum</p>
+      <p *ngIf="frmEmp.controls['EmpNo'].errors['pattern']">EmpNo is Must be  Numeric</p>
+      <p *ngIf="frmEmp.controls['EmpNo'].errors['odd']">EmpNo is Must be  Even</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>EmpName</label>
+    <input type="text" class="form-control"  formControlName="EmpName"/>
+  </div>
+  <!-- <div class="form-group">
+    <label>Designation</label>
+    <app-select-component [DataSource]="designations" formControlName="Designation"
+     (notify)="getDesignation($event)"></app-select-component>
+  </div>
+  <div class="form-group">
+    <label>DeptName</label>
+    <app-select-component [DataSource]="departments"
+    (notify)="getDeptName($event)" formControlName="DeptName"></app-select-component>
+  </div> -->
+  <div class="form-group">
+    <label>Salary</label>
+    <input type="text" class="form-control"  formControlName="Salary" />
+  </div>
+  <div class="form-group">
+    <input type="button" value="Clear" (click)="clear()" class="bt btn-primary">
+    <input type="submit" [disabled]="!frmEmp.valid"value="Save" class="bt btn-success">
+  </div>
+</form>
+  <hr/>
+    <!--generating the table dynamically-->
+  <table class="table table-bordered table-striped">
+     <!--Generate Headers-->
+     <thead>
+        <tr>
+          <th *ngFor="let header of columnHeaders">{{header}}</th>
+     </thead>
+     <tbody>
+        <tr *ngFor="let emp of employees" (click)="getSelectedEmp(emp)">
+           <td *ngFor="let header of columnHeaders">
+              {{emp[header]}}
+           </td>
+        </tr>
+     </tbody>
+  </table>
+</div>

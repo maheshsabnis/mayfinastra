@@ -22,3 +22,14 @@
     - It MUST accepts DataSource property to generate Rows and Columns by accepting collection from parent
     - It MUST accept 'CanDelete' a boolean property, if this is set to 'true', then each row of the component will have Delete button. When this button is clicked, the row must be deleted from Parent Component's collection 
     - Each column header MUST have tow Buttons 'Sort' and 'Reverse', when these buttons are clicked, the Data in table MUST be sorted/Reversed based on values present into that column
+
+# Date: 10-May-2022
+
+1. Create a Shopping Card Application using Angular Components and Services
+    - Component 1: That will Show all Categories
+    - Component 2: Will show Products of selected Category
+    - Component 3: Will show all purchased Products from each category with total price  
+2. Complete the EmployeeReactiveFormComponent class with following validations
+    - EmpName must be having format as FirstName MilldeName LastName
+    - EmpName must be String
+    - EmpNo Must not repeated (Custom Validator)

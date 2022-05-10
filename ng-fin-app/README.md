@@ -97,4 +97,84 @@ runtime.js            | runtime       |   1.25 kB |               677 bytes
   - USing the @ViewChild or View Encapsulation  
     - Using @ViewChild, means that the Parent Holds  reference of child Component and it update the child component explicitly
 - Publish-Subscribe Component Communication Patterns      
+  - Use Case: 
+    - Show List of Departments and Employees in Separate Tables
+    - When a DeptName is selected from Department List, the Employee List MUST show only Empployees from selected DeptName
+      - This can be implemented using the 'Angular Service' 
+  - Angular Service
+    - An Object that has a lifecycle global to entire application By Default
+    - This is pattern that we used for following
+      - Maintaining the 'STATE' of the data to be shared across Components, Mediator
+      - Used for Async Communication Pattern to external Services
+          - REST APIs
+          - Sockets
+            - SignalR or Socket.io
+          - gRPC   
+      - When used for Sharing STATE, the Service MUST be registered as a Global Singleton object at Application Level
+        - The 'root'
+      - The Service Object MUST be decorated as '@Injectable', class from '@angular/core'       
+- Concept of Form-Post in Angular
+  - It is a MVC Framework for Building Front-End Apps
+    - Model-View-Controller
+      - Model, Front-End Logic
+      - View, Component
+      - Controller, Logical block that is used for controlling the behavior of View
+        - Form Technology
+          - @angular/forms Package
+            - Template Form
+              - The mechanism of binding Component properties to UI using [(ngModel)], requires 'FormsModule'
+                - ngModel executes Update Code for Two-Way binding for only those properties which are used under the Component with ngChanges
+                  - Observations: 
+                    - If the same property is changed again-and-again, ngModelChanged will be invoked again-and-again and hence this may delay performance   
+                    - For Complex Object Property Update the instance of the class MUST be passed to ngModel
+                      - For each ngModelChange the instance is invoked     
+            - Reactive Forms
+              - A PURE MVC that is proven by implementation that Angular is MVC
+              - ReactiveFormsModule in @angular/forms
+                - AbstractControl
+                  - The abstract base class for all classes used for Forms
+                    - e.g. FormGroup, FormControl, etc.
+                - FormGroup
+                  - Represents a Currently Loaded Form on DOM
+                  - Map each editable element under the Form with Model object (Model-View Binding)
+                    - The Model instance is already loaded and cached
+                  - Methods and Properties
+                    - SetValues(), a method to assign data to FormGroup and Hence to Model class  
+                    - value, a property, to read data from FormGroup
+                - FormBuilder
+                  - Build the Form with all FormGroup and its Editable elements and it internally evaluates the Model Binding 
+                - ngForm Directive
+                  -  Internally mapped with the HTML Form tag &lt;form&gt;
+                - FormControl
+                  - Represents a Mapping between The public property of Model class and the editable element under 
+                  the form
+                    - A Collection of Editable elements under the FormGroup 
+                  - Methods and Properties
+                    - SetValues(), a method to assign data to FormControl and Hence to Model class property  
+                    - value, a property, to read data from FormControl
+                - Validatior          
+                  - A Class that contains static methods for applying validation rules on the public properties of the Model class
+                    - required(AbstractControl), requiredTrue(AbstractControl)
+                    - min(), max()
+                    - minLength(), maxLength()
+                    - pattern(RegEx | string)
+                    - null(AbstractControl)
+                    - compose([Array of Validators]), composeAsync([Array of Validators])
+                    - All method those are accepting 'AbstarctControl' as input parameter, need not to pass any parameter explicitly, instead the UI element with which the Model property is bound using formControlName, its reference will be passed as AbstractControl 
+                - [formGroup] an attribute directive with property-binding, applied on form tag to map the HTML Form with the FornGrouos instance which contains Model properties with FormControl Mapping  
+                - formControlName, an attribute directive used by the editable element to bind pubic properties of Model class with editable elements for Read/Write/Validation operations
+                  - formControlName is an instance property of the FormControl class
+
+        - Applying validators
+          - Check if the value is changed
+            - formGroup.controls['FormControlNamePropertyName'].dirty
+          - Check if the value is invalid
+            - formGroup.controls['FormControlNamePropertyName'].invalid OR !formGroup.controls['FormControlNamePropertyName'].valid
+          - Check the Error Conditions
+            - formGroup.controls['FormControlNamePropertyName'].error['ERROR-RULE']             
+    - Angular 10+
+      - strictNullChecks
+            - When a Model is bound to UI element, the AOT and Ivy will compile the Model and if any of the proeprty is possibly contains NULL, the the UI element MUST be configured for Nullbale type or inform the AOT and hence Ivy that on HTML do not use strictNullChecks 
+
+                         
  

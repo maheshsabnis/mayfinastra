@@ -1,0 +1,21 @@
+<h1>Employee Receiver</h1>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>EmpNo</th>
+      <th>EmpName</th>
+      <th>Designation</th>
+      <th>DeptName</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of FilteredEmployees">
+      <td>{{emp.EmpNo}}</td>
+      <td>{{emp.EmpName}}</td>
+      <td>{{emp.Designation}}</td>
+      <td>{{emp.DeptName}}</td>
+      <td>{{emp.Salary}}</td>
+    </tr>
+  </tbody>
+</table>

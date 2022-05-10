@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,18 +10,22 @@ import { SelectComponent } from './components/reusablecomponents/app.select.comp
 import { ParentComponent } from './components/parentchiletest/app.pernent.component';
 import { ChildComponent } from './components/parentchiletest/app.child.component';
 import { OtheChildComponent } from './components/parentchiletest/app.otherchild.component';
+import { DepartmentSenderComponent } from './components/communications/app.departmentsender.component';
+import { EmployeeReceiverComponent } from './components/communications/app.employeereceiver.component';
+import { EmployeeReactiveFormComponent } from './components/employeereactivecomponent/app.employeereactiveform.component';
 
 @NgModule({
   declarations: [
     AppComponent, MessageComponent, EmployeeComponent,
     SelectComponent, ParentComponent, ChildComponent,
-    OtheChildComponent
+    OtheChildComponent, DepartmentSenderComponent,EmployeeReceiverComponent,
+    EmployeeReactiveFormComponent
   ],
   imports: [
-    BrowserModule, FormsModule,
+    BrowserModule, FormsModule,ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [ParentComponent]
+  bootstrap: [EmployeeReactiveFormComponent]
 })
 export class AppModule { }

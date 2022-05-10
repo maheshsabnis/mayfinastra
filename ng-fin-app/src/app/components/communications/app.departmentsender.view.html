@@ -1,0 +1,15 @@
+<h1>Department Sender</h1>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>DeptNo</th>
+      <th>DeptName</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dept of departments" (click)="onRowClick(dept)">
+      <td>{{dept.DeptNo}}</td>
+      <td>{{dept.DeptName}}</td>
+    </tr>
+  </tbody>
+</table>
