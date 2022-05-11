@@ -33,3 +33,12 @@
     - EmpName must be having format as FirstName MilldeName LastName
     - EmpName must be String
     - EmpNo Must not repeated (Custom Validator)
+
+
+# Date: 11-May-2022
+
+1. Create a REST API or USer Free REST APIs and using HttpClient class Perform HTTP Operations on it using Angular CLient
+2. Create a Component that will have Search TextBox and a Table. The Search TextBox will be shown on the top of the HTML Table. The Table will show data received from the REST API when the component is loaded. Filter data from the Table based on teh Search string entered into the TexBox   
+3. refer the link for Token BAsed Auth Security to REST API
+    https://www.webnethelper.com/2020/01/authenticating-angular-8-client.html
+    

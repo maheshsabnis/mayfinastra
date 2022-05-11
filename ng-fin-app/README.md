@@ -175,6 +175,45 @@ runtime.js            | runtime       |   1.25 kB |               677 bytes
     - Angular 10+
       - strictNullChecks
             - When a Model is bound to UI element, the AOT and Ivy will compile the Model and if any of the proeprty is possibly contains NULL, the the UI element MUST be configured for Nullbale type or inform the AOT and hence Ivy that on HTML do not use strictNullChecks 
+            - ng update
+              - v1 to v3 is possible by v4 is not
+              - First Migrate from v1 to v2 or v3 and then migrate to v4
+  - Features of Angular Those Affect the UI (Directly and In-Directly) 
+    - REST API Calls  
+      - Indirect
+        - RxJs and its 'Observable' Object
+      - Use HttpClientModule from @angular/common/http
+        - Platform for Http Outgoing and Incoming calls
+        - Resolve the 'HttpClient' class
+          - HttpClient MUST be injected in the service class
+          - Methods
+            - get()/post()/put()/delete()
+              - All returns Observable<T>
+                - T, can be primitive type or Binary Responses 
+                  - ArrayBuffer, BLOB, introduced in Http2 protocol standard    
+            - Observable.subscription(next=>{}, error=>{}); 
+              - Client/ Caller subscribes to Observable
+                - next, successful execution and get data record by record
+                - error, the error response        
+      - Arrange for HttpInteceptors
+        - They will manage each outgoing and incoming calls by intercepting the HTTP Message by adding header information in it           
+          - HttpInterceptor INterface
+            - intercept(HttpRequest, HttpHandler): Observable<HttpEvent>
+              - HttpRequest: represents the current Http request initiated 
+                  - This request object can be modified by the application as per thr need e.g.
+                     - Add AUTHORIZATION Header in each outgoing request
+                     - Add Custom Header information e.g. Version 
+              - HttpHandler: handle the request to forward it to next Interceptor (if any) or forwarding the call to REST API
+              - HttpEvent: Manage the State of execution of HttpRequest (Success, fail, etc.)
+            - register this object as a singletone object into the Dependency Injection Container of @NgModule i.e. 'providers:[]' of NgModule
+              - providers:[{provide:HTTP_INTERCEPTORS, useClass:INTERCEPTOR_CLASS, multi:true }]
+                -  HTTP_INTERCEPTORS: Load Interceptor for Http Calls
+                - useClass: Register the class as Singleton as interceptor provided it implements HttpInterceptor interface
+                - multi: Monitor and intercept each HTTP Outgoing call   
+    - Directives
+      - Direct
+    - Pipes   
+      - Direct    
 
                          
  

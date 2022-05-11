@@ -5,3 +5,17 @@ export class Department {
   ){}
 }
 
+
+
+export class DepartmentClient {
+  constructor(
+    public deptno: number,
+    public deptname: string,
+    public location:string,
+    public capacity: number
+  ){}
+}
+
+
+
+

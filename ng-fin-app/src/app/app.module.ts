@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,19 +14,25 @@ import { OtheChildComponent } from './components/parentchiletest/app.otherchild.
 import { DepartmentSenderComponent } from './components/communications/app.departmentsender.component';
 import { EmployeeReceiverComponent } from './components/communications/app.employeereceiver.component';
 import { EmployeeReactiveFormComponent } from './components/employeereactivecomponent/app.employeereactiveform.component';
+import { HttpCallComponent } from './components/httpcallcomponent/app.httpcall.component';
+import {SecurityTokenInterceptorService} from './services/app.securityinterceptor.service';
+import { HttpSecureCallComponent } from './components/httpsecurecallcomponent/app.httpsecurecall.component';
 
 @NgModule({
   declarations: [
     AppComponent, MessageComponent, EmployeeComponent,
     SelectComponent, ParentComponent, ChildComponent,
     OtheChildComponent, DepartmentSenderComponent,EmployeeReceiverComponent,
-    EmployeeReactiveFormComponent
+    EmployeeReactiveFormComponent, HttpCallComponent,
+    HttpSecureCallComponent
   ],
   imports: [
-    BrowserModule, FormsModule,ReactiveFormsModule,
+    BrowserModule, FormsModule,ReactiveFormsModule,HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [EmployeeReactiveFormComponent]
+  providers: [{
+    provide:HTTP_INTERCEPTORS, useClass:SecurityTokenInterceptorService, multi:true
+  }],
+  bootstrap: [HttpSecureCallComponent]
 })
 export class AppModule { }

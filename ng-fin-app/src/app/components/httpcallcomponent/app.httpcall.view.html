@@ -1,0 +1,13 @@
+<div class="container">
+   <button (click)="loadData()">Get Data</button>
+    <hr>
+    <button (click)="saveData()">Post Data</button>
+    <hr/>
+    <strong>{{message}}</strong>
+    <hr/>
+    <div class="container">
+      <!--the inbuild pipe-->
+      <strong>{{departments | json}}</strong>
+    </div>
+
+</div>
