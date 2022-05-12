@@ -33,6 +33,22 @@
     <input type="button" value="Save" (click)="save()" class="bt btn-success">
   </div>
   <hr/>
+  <table class="table table-bordered table-striped">
+    <tbody>
+       <tr>
+         <td>
+           <input type="radio" name="r" value="red" (click)="color='red'"> Red
+         </td>
+         <td>
+          <input type="radio" name="r" value="yellow" (click)="color='yellow'"> Yellow
+        </td>
+        <td>
+          <input type="radio" name="r" value="blue"(click)="color='blue'" > Blue
+        </td>
+       </tr>
+    </tbody>
+  </table>
+  <br/>
   <!--Hard-Coded Table-->
   <!-- <table class="table table-bordered table-striped">
     <thead>
@@ -73,7 +89,9 @@
           <th *ngFor="let header of columnHeaders">{{header}}</th>
      </thead>
      <tbody>
-        <tr *ngFor="let emp of employees" (click)="getSelectedEmp(emp)">
+       <!--[setColor] is Custom Attribute Directive-->
+        <tr *ngFor="let emp of employees" (click)="getSelectedEmp(emp)"
+         [setColor]="color">
            <td *ngFor="let header of columnHeaders">
               {{emp[header]}}
            </td>

@@ -205,15 +205,97 @@ runtime.js            | runtime       |   1.25 kB |               677 bytes
                      - Add Custom Header information e.g. Version 
               - HttpHandler: handle the request to forward it to next Interceptor (if any) or forwarding the call to REST API
               - HttpEvent: Manage the State of execution of HttpRequest (Success, fail, etc.)
-            - register this object as a singletone object into the Dependency Injection Container of @NgModule i.e. 'providers:[]' of NgModule
+            - register this object as a singleton object into the Dependency Injection Container of @NgModule i.e. 'providers:[]' of NgModule
               - providers:[{provide:HTTP_INTERCEPTORS, useClass:INTERCEPTOR_CLASS, multi:true }]
                 -  HTTP_INTERCEPTORS: Load Interceptor for Http Calls
                 - useClass: Register the class as Singleton as interceptor provided it implements HttpInterceptor interface
                 - multi: Monitor and intercept each HTTP Outgoing call   
+        - If data is more, then use Server-Side Pagination for data fetch
+          - Note: This will increase number of hits to server and hence to DB, this will a either a cost (for Paid host e.g. Cloud) or Concurrency Issue for data access
+          - Use caching on server for read-only data display (e.g. reports)
+          - Use Angular Application State Management aka NGRX
+            - Complex Architecture for JS Apps           
+            - https://github.com/maheshsabnis/newngrx.git
     - Directives
       - Direct
-    - Pipes   
+      - Objects those are responsible for following
+        - Defining common Behavior on HTML Template of the component, aka Attribute Directives
+          - e.g. [(ngModel)], [formGroup], formControlName, etc.
+        - Reusable UI with Autonomous functionalities (Component  Directive) 
+        - Planning for Creating Custom Attribute Directive
+          - Create a Class decorated with @Directive from @angular/core
+            - The '@Directive' provides 'selector' property, which we have set for creating Custom HTML Attribute that will be applied on HTML Element
+              - Very IMP: 
+                - if this attribute is updated using Property binding then selector will be as follows
+                  - selector: '[NAME-OF-CUSTOM-ATTRIBUTE]' e.g. selector: '[setColor]'
+                - if not using property binding then just create a attribute as follows
+                  - selector: 'CUSTOM-ATTRIBUTE-NAME' e.g. selector:'mydata'
+          - Define public properties decorated with @Input decorator for accepting data to set the behavior of the attribute
+          - Create a Function that contains logic for the Directive
+          - Target the HTML element where the Directive is applied
+            - Using the 'ElementRef' class from the @angular/core
+          - Plan for Rendering of HTML element on which the directive is applied and is executed
+            - After execution of Directive the new rendering will be defined by the 'Renderer2' from @angular/core    
+          - Define public method(s) to activate and execute the directive based on event. This event will be define by applying '@HostLisner('EVENT-NAME')' decorator on the method(s)   
+            - When this event is raised on HTMl element, the directive will be activated and executed and then the new rendering will be generated on DOM
+      - Practices for creating Custom Attribute Directive 
+        - Do not write complex logic for execution
+        - Make sure that the DOM rendering is handled using standard CSS or HTML Tags
+        - Events those cause the directive to activate and execute MUST be standard JS Events
+        - If not above 3 points the better create Custom reusable Component Directive        
+    - LitElements
+      - Directly  impact the UI
+      - npm install --save lit lit-element lit-html
+        - lit
+          - The base library for WebComponents for LitElements
+        - lit-element
+          - The library for the Implementation that contains
+            - html template
+              - rendering
+            - properties
+              - Data
+            - css
+              - Styles
+        - lit-html
+          - HTML template Parser and execution in teh Shadowdom       
+      - npm install --save @webcomponents/custom-elements @webcomponents/webcomponentsjs
+        - @webcomponents/custom-elements
+            - the Custom Element Registry
+         @webcomponents/webcomponentsjs
+            - The Execution of the Element in DOM under the Shadow DOM 
+      - LitElements in Angular
+        - use 'lie/decorators.js'
+          - a Custom Decorator Concept of ES 6 implemented only for Angular   
+          - provide the '@customElement('NAME-OF-ELEMENT-THAT-WILL-BE-A-TAG-USED-AS-HTML-TAG')' decorator   
+            - using @customElement() the Angular EcoSystem will understand the LitElement as custom webComponent for Angular Application
+        - Configure the @NgModule to Understand and use the Custom Elements in its EcoSystem
+          - Import 'CUSTOM_ELEMENT_SCHEMA' from @angular/core and pass it to the 'schemas:[]' array of the @NgModule   
+          - CUSTOM_ELEMENT_SCHEMA, will inform Angular that there are custom webcomponents used in the application
+        - to generate the HTML dynamically based on properties using the JS style coding in HTML under the '${}'  
+        - bind the method of LitElement class with HTML element using following
+          - @change=${this.selectData}
+          - @EVENT=${METHOD} 
+        - Use Cases
+          - Emit / Bubble Up data from LieElement to Angular
+            - Use the 'dispatchEvent()' method of the JavaScript use by LitElement class to bubble-up CustomEvent to Angular Component
+```` javascript
+ this.dispatchEvent(new CustomEvent<any>('change',{
+       detail:data
+     }))
+
+````
+           -  CustomEvent<T>, a class used to define custom eventing in JavaScript Apps those are using WebComponents. The constructor accepts 2 parameters
+            - Parameter 1: The Custom Event name, this MUST be subscribed by the parent of the WebComponent
+            - Parameter 2: The 'detail', the Event Payload or EventArguments emitted by the WebComponent 
+
+          - Pass data from Angular to LitElement 
+            - Declare @property in LitElement and use them for property binding in Angular component
+            - Using ngModel when the Angular Component is changed, the updated property value from Component will be passed to LitElement
+            - To pass the data from Complex Array, make sure that the LitElement MUT define a @property of the type the Custom Class for which the Array is declared, the only the Array in LitElement will be Mutated   
+    - Pipes    
       - Direct    
+      - SImple Transformation of Data into the String
+        - json, date, currency, etc.
 
                          
  

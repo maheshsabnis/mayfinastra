@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -17,6 +17,8 @@ import { EmployeeReactiveFormComponent } from './components/employeereactivecomp
 import { HttpCallComponent } from './components/httpcallcomponent/app.httpcall.component';
 import {SecurityTokenInterceptorService} from './services/app.securityinterceptor.service';
 import { HttpSecureCallComponent } from './components/httpsecurecallcomponent/app.httpsecurecall.component';
+import { ColorDirective } from './directives/app.color.directive';
+import { ListElementUserComponent } from './components/liteleemntuser/app.listeleemntuser.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { HttpSecureCallComponent } from './components/httpsecurecallcomponent/ap
     SelectComponent, ParentComponent, ChildComponent,
     OtheChildComponent, DepartmentSenderComponent,EmployeeReceiverComponent,
     EmployeeReactiveFormComponent, HttpCallComponent,
-    HttpSecureCallComponent
+    HttpSecureCallComponent, ColorDirective, ListElementUserComponent
   ],
   imports: [
     BrowserModule, FormsModule,ReactiveFormsModule,HttpClientModule,
@@ -33,6 +35,7 @@ import { HttpSecureCallComponent } from './components/httpsecurecallcomponent/ap
   providers: [{
     provide:HTTP_INTERCEPTORS, useClass:SecurityTokenInterceptorService, multi:true
   }],
-  bootstrap: [HttpSecureCallComponent]
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [ListElementUserComponent]
 })
 export class AppModule { }

@@ -12,6 +12,7 @@ export class EmployeeComponent implements OnInit {
   employees:Array<Employee>;
   private logic:Logic;
   columnHeaders:Array<string>;
+  color:string;
   // assign data from COnstants to local public data members so that they can be used
   // on UI
   departments = Departments;
@@ -21,6 +22,7 @@ export class EmployeeComponent implements OnInit {
     this.employees = new Array<Employee>();
     this.logic = new Logic();
     this.columnHeaders = new Array<string>();
+    this.color = '';
   }
 
   // call getEMployees() to read Employees

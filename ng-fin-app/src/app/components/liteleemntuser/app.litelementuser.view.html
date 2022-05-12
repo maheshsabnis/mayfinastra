@@ -1,0 +1,34 @@
+<div class="container">
+   <h2>Using LitElements in Angular Component</h2>
+
+   <div class="container">
+     <input type="text" class="form-control" [(ngModel)]="information">
+      <strong>{{information}}</strong>
+      <br/>
+      <button (click)="update()">Update Information</button>
+      <br/>
+      <strong>
+        Data Received from the LitElement is
+        <br/>
+        {{message}}
+      </strong>
+   </div>
+   <br/>
+
+   <!--Following is Custom Tag of Lit Element
+     $event represents the CustomEvent object emitted from the LitElement
+      [strInfo]="information", using the Property Binding the [(ngModel)], the two-way binding
+      of the Angular will pass data to the LitElement
+  -->
+   <static-dropdown  [strInfo]="information" [employee]="employee" [employees]="pEmployees" (change)="onChange($event)"></static-dropdown>
+   <hr/>
+   <div class="container">
+     <form [formGroup]="frmEmp">
+      EmpNo: <input type="text"  formControlName="EmpNo">
+      <br/>
+      EmpName: <input type="text" formControlName="EmpName">
+      <br/>
+      <button (click)="saveEmp()">Save</button>
+    </form>
+   </div>
+</div>
