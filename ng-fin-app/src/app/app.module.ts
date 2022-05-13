@@ -19,6 +19,10 @@ import {SecurityTokenInterceptorService} from './services/app.securityintercepto
 import { HttpSecureCallComponent } from './components/httpsecurecallcomponent/app.httpsecurecall.component';
 import { ColorDirective } from './directives/app.color.directive';
 import { ListElementUserComponent } from './components/liteleemntuser/app.listeleemntuser.component';
+import { CreateDeptComponent } from './components/routingapp/app.createdept.component';
+import { EditDeptComponent } from './components/routingapp/app.editdept.component';
+import { ListDeptComponent } from './components/routingapp/app.listdept.component';
+import { MainRouteComponent } from './components/routingapp/app.mainroute.component';
 
 @NgModule({
   declarations: [
@@ -26,16 +30,21 @@ import { ListElementUserComponent } from './components/liteleemntuser/app.listel
     SelectComponent, ParentComponent, ChildComponent,
     OtheChildComponent, DepartmentSenderComponent,EmployeeReceiverComponent,
     EmployeeReactiveFormComponent, HttpCallComponent,
-    HttpSecureCallComponent, ColorDirective, ListElementUserComponent
+    HttpSecureCallComponent, ColorDirective, ListElementUserComponent,
+    CreateDeptComponent,EditDeptComponent,ListDeptComponent,
+    MainRouteComponent
   ],
   imports: [
     BrowserModule, FormsModule,ReactiveFormsModule,HttpClientModule,
+    // Importing and loading AppRoutingModule and hence
+    // the RouterModule in it and hence RouteTable
+    // This means the RouteTable is loaded at root of the Current Application
     AppRoutingModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS, useClass:SecurityTokenInterceptorService, multi:true
   }],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [ListElementUserComponent]
+  bootstrap: [MainRouteComponent]
 })
 export class AppModule { }

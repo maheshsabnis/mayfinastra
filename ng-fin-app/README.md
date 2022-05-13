@@ -296,6 +296,45 @@ runtime.js            | runtime       |   1.25 kB |               677 bytes
       - Direct    
       - SImple Transformation of Data into the String
         - json, date, currency, etc.
-
-                         
- 
+- Routing
+  - RouterModule from @angular/router
+  - Platform for Route BAsed Apps
+  - Method of RouterModule
+    - forRoot(ROUTE-TABLE)
+      - Load the Route Table at the Current Application's root level
+    - forChild(ROUTE-TABLE) 
+      - Load the Route Table on demand for lazy loading  
+  - Classes
+    - Routes
+      - A Route table that contains collection of 'Route'
+    - Route
+      - A Class that defines route entry in Route Table
+      - Properties
+          - path: URL
+          - component: Name of the component
+          - redirectTo: Explicit redirect to specific Component
+          - children: A child Route Table
+          - loadChildren: Lazy Loading
+            - Perform Async IO Search of dependencies and load the module, this will be cached in the browser 
+          - canActivate: Used for Role Based Routing aka Guarded Routes
+    - Router
+      - Used for Event based explicit routing      
+      - Method
+        - navigate([ROUTE-EXPRESSION])
+    - ActivatedRoute
+      - represents the current active route navigation
+      - Used to subscribe to the route expression and read route parameters (if any) 
+    - CanActivate
+      - Interface provided for Guarded Routing
+    - RouteSnapshot 
+      - Maintain the state of Guarded Routing          
+  - Directives
+    - [routerLink]
+      - Applied on anchor tag to query to route table
+```` html
+  <a [routerLink]="[PATH]">
+````
+    - The Platform in which routed component will be loaded and rendered 
+```` html
+    <router-outlet></router-outlet>
+````

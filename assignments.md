@@ -42,3 +42,8 @@
 3. refer the link for Token BAsed Auth Security to REST API
     https://www.webnethelper.com/2020/01/authenticating-angular-8-client.html
     
+# Date: 13-May-2022
+1. Create a LitElement, that will provide a Multicolumn DropdownList from where, the Department Data Can be emitted to the Angular Parent Component
+2. Complete the Routeing App folder application which will be added with the DeptDeleteComponent to delete the department (OR Use the FREE APIs).
+    - Modify the ListDeptComponent by showing the 'Delete' button for each row. 
+

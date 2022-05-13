@@ -1,0 +1,28 @@
+<h1>List Department</h1>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>DeptNo</th>
+      <th>DeptName</th>
+      <th>Location</th>
+      <th>Capacity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dept  of depts">
+      <td>{{dept.deptno}}</td>
+      <td>{{dept.deptname}}</td>
+      <td>{{dept.location}}</td>
+      <td>{{dept.capacity}}</td>
+      <td>
+        <button class="btn btn-warning" (click)="navigateEdit(dept.deptno)">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br/>
+<br/>
+<a [routerLink]="['emp']">Employee</a>
+<br/>
+<br/>
+<router-outlet></router-outlet>
