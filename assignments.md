@@ -47,3 +47,9 @@
 2. Complete the Routeing App folder application which will be added with the DeptDeleteComponent to delete the department (OR Use the FREE APIs).
     - Modify the ListDeptComponent by showing the 'Delete' button for each row. 
 
+
+# Date: 16-May-2022
+1.  Test the EmployeeComponent to check if the new row is added into the table showing Employee array when the save button is clicked
+2. Test the Employee Component to make sure that when the EMpNo is wrong then the validation message is displayed for EmpNo invalid
+3. Test the ColorDirective to check whether the Html Element changes its background color when the MouseEnter event is raised on it 
+

@@ -27,10 +27,12 @@
   <div class="form-group">
     <label>Salary</label>
     <input type="text" class="form-control" [(ngModel)]="employee.Salary" />
+    <br/>
+    <input type="text" class="form-control" [value]="tax"  disabled>
   </div>
   <div class="form-group">
-    <input type="button" value="Clear" (click)="clear()" class="bt btn-primary">
-    <input type="button" value="Save" (click)="save()" class="bt btn-success">
+    <input type="button" value="Clear" (click)="clear()" class="btn btn-primary">
+    <input type="button" value="Save" (click)="save()" class="btn btn-success">
   </div>
   <hr/>
   <table class="table table-bordered table-striped">

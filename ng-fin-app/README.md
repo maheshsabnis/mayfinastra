@@ -338,3 +338,22 @@ runtime.js            | runtime       |   1.25 kB |               677 bytes
 ```` html
     <router-outlet></router-outlet>
 ````
+
+- Quality Assurance for Angular Apps  
+  - Planning For Testing
+    - Choose Right Framework
+    - Understand the Angular Object Model for Tests
+  - Testing Configuration
+    - Test Prerequisites
+      - Arrangement of required objects for Testing
+    - Test Dependencies
+      - Set of dependencies used while test
+        - e.g. If Component is to be tested, then make sure that all objects used by component must be arranged in test
+          - Focus on 'UNIT TEST'
+    - Test AddIns  
+      - Coverage of Code
+      - JEST
+  - What MUST be Tested?
+    - All Components
+    - Write at lease One Test for Each Service
+    - Test Directive

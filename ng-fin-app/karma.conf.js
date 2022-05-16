@@ -2,15 +2,17 @@
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
 module.exports = function (config) {
+  // Load all Karma Plugins
   config.set({
     basePath: '',
+    // Use the Testing Frwk Object Model
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
-      require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
-      require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('karma-jasmine'), // Karma-Jasmine integration to load the Test Files into the Memory and test them
+      require('karma-chrome-launcher'), // Use the Chrome Launcher service to launch Chrome Process to load the JS dependencies
+      require('karma-jasmine-html-reporter'), // The HTMl Reporter for Coverage of the Code
+      require('karma-coverage'), // Execute the Code Coverage so that the Code-Quality can be tested
+      require('@angular-devkit/build-angular/plugins/karma') // Karma + Angular Integration
     ],
     client: {
       jasmine: {

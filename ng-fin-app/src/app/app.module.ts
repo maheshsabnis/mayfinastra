@@ -23,6 +23,8 @@ import { CreateDeptComponent } from './components/routingapp/app.createdept.comp
 import { EditDeptComponent } from './components/routingapp/app.editdept.component';
 import { ListDeptComponent } from './components/routingapp/app.listdept.component';
 import { MainRouteComponent } from './components/routingapp/app.mainroute.component';
+import { HighlightDirective } from './directives/app.highlight.directive';
+import { HighLightComponent } from './components/directiveusecomponent/app.about.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,7 @@ import { MainRouteComponent } from './components/routingapp/app.mainroute.compon
     EmployeeReactiveFormComponent, HttpCallComponent,
     HttpSecureCallComponent, ColorDirective, ListElementUserComponent,
     CreateDeptComponent,EditDeptComponent,ListDeptComponent,
-    MainRouteComponent
+    MainRouteComponent, HighlightDirective, HighLightComponent
   ],
   imports: [
     BrowserModule, FormsModule,ReactiveFormsModule,HttpClientModule,
@@ -45,6 +47,6 @@ import { MainRouteComponent } from './components/routingapp/app.mainroute.compon
     provide:HTTP_INTERCEPTORS, useClass:SecurityTokenInterceptorService, multi:true
   }],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [MainRouteComponent]
+  bootstrap: [HighLightComponent]
 })
 export class AppModule { }
