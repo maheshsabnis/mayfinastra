@@ -53,3 +53,6 @@
 2. Test the Employee Component to make sure that when the EMpNo is wrong then the validation message is displayed for EmpNo invalid
 3. Test the ColorDirective to check whether the Html Element changes its background color when the MouseEnter event is raised on it 
 
+# Date: 17-May-2022
+1. Write a Test on a Angular component which is Constructor injected using the Angular Service
+    - Write a Test for a method of the component which is using the service instance and calling the method from the service 

@@ -352,8 +352,27 @@ runtime.js            | runtime       |   1.25 kB |               677 bytes
           - Focus on 'UNIT TEST'
     - Test AddIns  
       - Coverage of Code
-      - JEST
+      - JEST 
   - What MUST be Tested?
     - All Components
     - Write at lease One Test for Each Service
     - Test Directive
+
+- To test the Angular Service which is making HTTP Calls, use  following Object
+  - HttpClientTestingModule
+    - Resolve the HttpClient Object in the Testing Environment
+    - This will provide an instance of HttpClient to Test Cases
+      - Internally resolve an Observable
+  - HttpTestingController  
+    - This will be used to MOCK the Http Call, this will be used by  HttpClientTestingModule nto make sure that all calls are mocked under the hood 
+      - expectOne()
+        - A Single request is made, this will match with the URL and it will return Mock Object 
+      - expectNone()
+        - No TRequest has been made, used in case of failure calls 
+      - verify()
+        - This will make sure that not requests outstanding, this will help the Mock Object to release    
+    - It also helps to clear the memory after the test is completed 
+
+- The Angular Material and PrimeNG
+  - Angular Material promoted and supported by Angular Team
+  - Offers Read-to-Use Components

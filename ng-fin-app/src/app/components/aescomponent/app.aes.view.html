@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Using Crypto-js in Angular Application</h1>
+  <h6>Encrypt</h6>
+  <div class="form-group">
+    <label>Message</label>
+    <input type="text" [(ngModel)]="message">
+  </div>
+  <div class="form-group">
+    <label>Encryption Password</label>
+    <input type="password" [(ngModel)]="encryptionpassword">
+  </div>
+  <div class="form-group">
+    <button class="btn btn-success" (click)="encryptCredentials()">Encrypt</button>
+  </div>
+  <hr/>
+  <div class="container">
+    <strong>
+      Encrypted String is  =
+      <br/>
+      {{encryptedString}}
+    </strong>
+  </div>
+  <hr/>
+  <h6>Decrypt</h6>
+  <div class="form-group">
+    <label>Encrypted Message</label>
+    <input type="text" [(ngModel)]="encryptedString">
+  </div>
+  <div class="form-group">
+    <label>Decryption Password</label>
+    <input type="password" [(ngModel)]="encryptionpassword">
+  </div>
+  <div class="form-group">
+    <button class="btn btn-success" (click)="decryptCredentials()">Decrypt</button>
+  </div>
+  <hr/>
+  <div class="container">
+    <strong>
+      Encrypted String is  =
+      <br/>
+      {{originalMessage}}
+    </strong>
+  </div>
+</div>

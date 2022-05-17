@@ -25,6 +25,10 @@ import { ListDeptComponent } from './components/routingapp/app.listdept.componen
 import { MainRouteComponent } from './components/routingapp/app.mainroute.component';
 import { HighlightDirective } from './directives/app.highlight.directive';
 import { HighLightComponent } from './components/directiveusecomponent/app.about.component';
+import { AESComponent } from './components/aescomponent/app.aes.component';
+
+// Import modules for  for the CDK
+import {MaterialExampleModule} from './app.material.modules';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,8 @@ import { HighLightComponent } from './components/directiveusecomponent/app.about
     EmployeeReactiveFormComponent, HttpCallComponent,
     HttpSecureCallComponent, ColorDirective, ListElementUserComponent,
     CreateDeptComponent,EditDeptComponent,ListDeptComponent,
-    MainRouteComponent, HighlightDirective, HighLightComponent
+    MainRouteComponent, HighlightDirective, HighLightComponent,
+    AESComponent
   ],
   imports: [
     BrowserModule, FormsModule,ReactiveFormsModule,HttpClientModule,
@@ -47,6 +52,6 @@ import { HighLightComponent } from './components/directiveusecomponent/app.about
     provide:HTTP_INTERCEPTORS, useClass:SecurityTokenInterceptorService, multi:true
   }],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [HighLightComponent]
+  bootstrap: [AESComponent]
 })
 export class AppModule { }
